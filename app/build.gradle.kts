@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
+    kotlin("plugin.serialization") version "2.0.20"
 }
 
 android {
@@ -51,6 +52,8 @@ android {
 
 dependencies {
 
+    var ktor_version = "2.3.12"
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
@@ -66,4 +69,21 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+
+
+    // Ktor client core dependency
+    implementation("io.ktor:ktor-client-core:$ktor_version")
+
+    // Ktor client for Android
+    implementation("io.ktor:ktor-client-android:$ktor_version")
+
+    // (Optional) Ktor client logging for debugging HTTP requests
+    implementation("io.ktor:ktor-client-logging:$ktor_version")
+
+    // (Optional) JSON serialization support
+    implementation("io.ktor:ktor-client-serialization:$ktor_version")
+
+    implementation("ch.qos.logback:logback-classic:1.2.3")
+
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.7.1") //kotlin serialization support for json
 }
